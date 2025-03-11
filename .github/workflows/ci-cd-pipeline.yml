@@ -24,12 +24,20 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install pytest  # Explicitly install pytest
           pip install -r requirements.txt
-          pip install pytest
+
+      - name: Verify Installed Packages
+        run: pip list  # Check installed packages
+
+      - name: Debug Python Path
+        run: |
+          which python
+          which pytest
+          python -m pytest --version
 
       - name: Run Tests
-        run: |
-          pytest  # Ensure you have tests written
+        run: python -m pytest  # Ensure pytest runs from the correct environment
 
   deploy:
     needs: build
