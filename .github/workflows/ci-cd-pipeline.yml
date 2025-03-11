@@ -19,13 +19,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10  # Upgraded Python version
+          python-version: 3.10  # ✅ Upgraded Python version
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install --force-reinstall pytest
-          pip install -r requirements.txt
+          pip install -r requirements.txt  # ✅ Ensure pytest is in requirements.txt
 
       - name: Verify pytest Installation
         run: |
@@ -34,7 +33,7 @@ jobs:
           python -m pytest --version || echo "pytest not working"
 
       - name: Run Tests
-        run: python -m pytest  # Runs pytest correctly
+        run: python -m pytest  # ✅ Run pytest correctly using Python
 
   deploy:
     needs: build
