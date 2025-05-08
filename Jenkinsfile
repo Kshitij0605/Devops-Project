@@ -11,8 +11,8 @@ pipeline {
         stage('Set up Python') {
             steps {
                 sh '''
-                    apt-get update
-                    apt-get install -y python3.10 python3.10-venv python3.10-dev python3-pip
+                    sudo apt-get update
+                    sudo apt-get install -y python3.10 python3.10-venv python3.10-dev python3-pip
                     python3.10 -m venv venv
                     source venv/bin/activate
                     python -m pip install --upgrade pip
